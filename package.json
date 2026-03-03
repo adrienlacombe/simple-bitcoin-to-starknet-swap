@@ -1,0 +1,22 @@
+{
+  "name": "simple-bitcoin-starknet-swap",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "@keep-network/tbtc-v2.ts": "^3.0.0",
+    "ethers": "^5.7.2",
+    "starknet": "^6.24.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "vite": "^5.4.0",
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "@types/qrcode": "^1.5.5"
+  }
+}

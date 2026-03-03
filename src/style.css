@@ -1,0 +1,343 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+  background: #0d1117;
+  color: #e6edf3;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+#app {
+  max-width: 480px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  color: #8b949e;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Error banner */
+.error-banner {
+  background: #2d1214;
+  border: 1px solid #da3633;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  color: #f85149;
+  margin-bottom: 1rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Steps */
+.step {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+/* Toggle */
+.toggle-group {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.toggle {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  background: #0d1117;
+  color: #8b949e;
+  border: none;
+  border-radius: 0;
+  font-weight: 500;
+}
+
+.toggle:hover {
+  background: #21262d;
+}
+
+.toggle.active {
+  background: #238636;
+  color: #fff;
+}
+
+/* Pending orders */
+#pending-orders {
+  margin-bottom: 1rem;
+}
+
+.order-card {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.order-card:hover {
+  border-color: #58a6ff;
+}
+
+.order-card .order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.order-card .order-type {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  background: #238636;
+  color: #fff;
+}
+
+.order-card .order-type.tbtc {
+  background: #6e40c9;
+}
+
+.order-card .order-id {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  color: #8b949e;
+}
+
+.order-card .order-detail {
+  font-size: 0.8rem;
+  color: #8b949e;
+}
+
+.order-card .order-status {
+  font-size: 0.75rem;
+  color: #58a6ff;
+  margin-top: 0.25rem;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input {
+  width: 100%;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  color: #e6edf3;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #58a6ff;
+}
+
+button {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #238636;
+  color: #fff;
+  font-family: inherit;
+}
+
+button:hover:not(:disabled) {
+  background: #2ea043;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #21262d;
+  color: #e6edf3;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #30363d;
+}
+
+.btn-small {
+  width: auto;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  background: #21262d;
+}
+
+.btn-small:hover {
+  background: #30363d;
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-row button {
+  flex: 1;
+}
+
+/* Quote */
+.quote-details {
+  margin-bottom: 1rem;
+}
+
+.quote-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #21262d;
+  font-size: 0.9rem;
+}
+
+.quote-row:last-child {
+  border-bottom: none;
+}
+
+.quote-row span:first-child {
+  color: #8b949e;
+}
+
+/* Deposit */
+.deposit-hint {
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin-bottom: 1rem;
+}
+
+.deposit-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.deposit-amount .label {
+  color: #8b949e;
+  font-size: 0.8rem;
+}
+
+.mono {
+  font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, monospace;
+  font-size: 0.85rem;
+}
+
+.small {
+  font-size: 0.75rem;
+  color: #8b949e;
+  word-break: break-all;
+}
+
+#qr-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+#qr-canvas {
+  border-radius: 8px;
+}
+
+.deposit-address {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.deposit-address .mono {
+  flex: 1;
+  word-break: break-all;
+  font-size: 0.75rem;
+}
+
+.deposit-status {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #8b949e;
+}
+
+/* Status */
+.status-text {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.success-text {
+  text-align: center;
+  color: #3fb950;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #30363d;
+  border-top-color: #58a6ff;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
