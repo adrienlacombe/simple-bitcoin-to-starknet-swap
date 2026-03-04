@@ -79,7 +79,7 @@ const stepStatus = document.getElementById("step-status")!;
 
 const btnGarden = document.getElementById("btn-garden")!;
 const btnTbtc = document.getElementById("btn-tbtc")!;
-const gardenFields = document.getElementById("garden-fields")!;
+const tbtcMinHint = document.getElementById("tbtc-min-hint")!;
 
 const starknetAddrInput = document.getElementById("starknet-address") as HTMLInputElement;
 const btcRefundInput = document.getElementById("btc-refund-address") as HTMLInputElement;
@@ -217,12 +217,11 @@ function setProvider(provider: Provider) {
   activeProvider = provider;
   btnGarden.classList.toggle("active", provider === "garden");
   btnTbtc.classList.toggle("active", provider === "tbtc");
+  tbtcMinHint.classList.toggle("hidden", provider !== "tbtc");
 
   if (provider === "garden") {
-    gardenFields.classList.remove("hidden");
     btnNext.textContent = "Get Quote";
   } else {
-    gardenFields.classList.add("hidden");
     btnNext.textContent = "Generate Deposit Address";
   }
 }
@@ -347,6 +346,7 @@ btnConfirm.addEventListener("click", async () => {
 async function handleTbtcDeposit() {
   const starknetAddr = starknetAddrInput.value.trim();
   const btcRefund = btcRefundInput.value.trim();
+  const btcAmount = parseFloat(btcAmountInput.value);
 
   if (!starknetAddr) {
     showError("Enter a Starknet address");
@@ -354,6 +354,10 @@ async function handleTbtcDeposit() {
   }
   if (!btcRefund) {
     showError("Enter a Bitcoin refund address");
+    return;
+  }
+  if (!btcAmount || btcAmount < 0.01) {
+    showError("tBTC requires a minimum of 0.01 BTC");
     return;
   }
 
@@ -379,14 +383,16 @@ async function handleTbtcDeposit() {
     saveOrder(savedOrder);
     currentOrderId = savedOrder.id;
 
-    // Show deposit without exact amount (tBTC accepts any amount)
-    hintExact.classList.add("hidden");
-    hintAny.classList.remove("hidden");
-    depositAmountRow.classList.add("hidden");
+    // Show deposit with amount
+    hintExact.classList.remove("hidden");
+    hintAny.classList.add("hidden");
+    depositAmountRow.classList.remove("hidden");
+    depositAmountEl.textContent = btcAmount.toFixed(8) + " BTC";
     depositAddrEl.textContent = deposit.bitcoinAddress;
     depositStatusEl.textContent = "Waiting for your transaction…";
 
-    await QRCode.toCanvas(qrCanvas, `bitcoin:${deposit.bitcoinAddress}`, {
+    const btcUri = `bitcoin:${deposit.bitcoinAddress}?amount=${btcAmount.toFixed(8)}`;
+    await QRCode.toCanvas(qrCanvas, btcUri, {
       width: 280,
       margin: 2,
       color: { dark: "#000000", light: "#ffffff" },

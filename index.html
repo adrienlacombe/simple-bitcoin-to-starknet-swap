@@ -36,11 +36,10 @@
           <label for="btc-refund-address">Bitcoin Refund Address</label>
           <input type="text" id="btc-refund-address" placeholder="bc1q... (used if swap fails)" />
         </div>
-        <div id="garden-fields">
-          <div class="form-group">
-            <label for="btc-amount">BTC Amount</label>
-            <input type="number" id="btc-amount" placeholder="0.001" step="0.00001" min="0" />
-          </div>
+        <div class="form-group">
+          <label for="btc-amount">BTC Amount</label>
+          <input type="number" id="btc-amount" placeholder="0.001" step="0.00001" min="0" />
+          <span id="tbtc-min-hint" class="small hidden">Minimum 0.01 BTC for tBTC</span>
         </div>
         <button id="btn-next">Get Quote</button>
       </section>
